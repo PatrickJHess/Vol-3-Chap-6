@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>What Is The Yield To Maturity And Why It Matters &#8212; Basic Concepts of Fixed Income:Par Yields</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Define_YTM';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Calculating Yields to Maturity (YTM)" href="Calculating_Yields_To_Maturity.html" />
+    <link rel="prev" title="Yields To Maturity" href="Chapter_Six_Highlights.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Basic Concepts of Fixed Income:Par Yields</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Financial Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concepts of Fixed Income: Chapter Five</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Chapter_Six_Highlights.html">Yields To Maturity</a><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">What Is The Yield To Maturity And Why It Matters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calculating_Yields_To_Maturity.html">Calculating Yields to Maturity (YTM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter_Six_Summary.html">Summarizing The Results of Calculating Yields To Maturity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imported_functions_Six.html">Functions Imported by Chapter Five.</a></li>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/PatrickJHess/Vol-3-Chap-5/issues/new?title=Issue%20on%20page%20%2FDefine_YTM.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Define_YTM.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>What Is The Yield To Maturity And Why It Matters</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formula-and-calculation">Formula and Calculation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-yield-to-maturity">Limitations of Yield To Maturity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-yield-to-maturity">Calculating The Yield To Maturity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-three-bond-example">A three bond example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-make-the-initial-guess-7-and-calculate-two-new-guesses-for-the-following-bonds"><font color="green">Application: Make the initial guess 7% and calculate two new guesses for the following bonds:</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-deeper-dive-with-ai"><font color="green">Take a deeper dive with AI</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-suggestions-to-get-you-started-with-gemini">Some suggestions to get you started with Gemini.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-and-paste-the-questions-here">Copy and paste the questions here</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="what-is-the-yield-to-maturity-and-why-it-matters">
+<h1>What Is The Yield To Maturity And Why It Matters<a class="headerlink" href="#what-is-the-yield-to-maturity-and-why-it-matters" title="Link to this heading">#</a></h1>
+<p>The Yield to Maturity (<span class="math notranslate nohighlight">\(\text{ytm}\)</span>) of a bond is defined as the single discount rate (<span class="math notranslate nohighlight">\(\text{ytm}\)</span>) that equates the present value of the bond’s expected future cash flows (coupons and principal) to its current market value.</p>
+<section id="formula-and-calculation">
+<h2>Formula and Calculation:<a class="headerlink" href="#formula-and-calculation" title="Link to this heading">#</a></h2>
+<p>The general formula for a bond’s value is:</p>
+<p>     <span class="math notranslate nohighlight">\(\text{Bond Value} = \sum_{t=1}^{T}\text{Cash Flow}_{t}\times e^{-r_t\times t}\)</span></p>
+<br>
+<p>The discount rate at <span class="math notranslate nohighlight">\(\text{t}\)</span> is <span class="math notranslate nohighlight">\(\text{r}_t\)</span>. Substituting the yield to maturity (<span class="math notranslate nohighlight">\(\text{ytm}\)</span>) for each discount rate:</p>
+<p>     <span class="math notranslate nohighlight">\(\text{Bond Value} = \sum_{t=1}^{T}\text{Cash Flow}_{t}\times e^{-\text{ytm}\times t}\)</span>
+<br></p>
+<p>For a zero-coupon bond (a bond making a single payment at maturity), <span class="math notranslate nohighlight">\(\text{ytm}\)</span> can be calculated directly:</p>
+<p>     <span class="math notranslate nohighlight">\( \text{P(t)} = e^{-\text{ytm}\times t}\times \text{Cash Flow}_t\)</span></p>
+</section>
+<section id="limitations-of-yield-to-maturity">
+<h2>Limitations of Yield To Maturity<a class="headerlink" href="#limitations-of-yield-to-maturity" title="Link to this heading">#</a></h2>
+<p>The yield to maturity (<span class="math notranslate nohighlight">\(\text{ytm}\)</span>) is often, but incorrectly, assumed to be the actual internal rate of return (IRR) an investor will earn by holding a bond until maturity. This assumption holds true only for default-free bonds that involve a single payment at maturity.</p>
+<p>For bonds with multiple cash flows (i.e., coupon payments), the <span class="math notranslate nohighlight">\(\text{ytm}\)</span> is merely an approximation because the reinvestment rates for these payments are uncertain and are unlikely to equal the yield to maturity. This uncertainty parallels the limitations investors encounter when using IRR in capital budgeting. Furthermore, the promised payments for bonds with default risk add an additional level of uncertainty.</p>
+<p>Despite these limitations, it is important to recognize that bond pricing inherently incorporates the prevailing term structure of interest rates and reflects forward rates, that are indicative of future reinvestment returns.</p>
+</section>
+<section id="calculating-the-yield-to-maturity">
+<h2>Calculating The Yield To Maturity<a class="headerlink" href="#calculating-the-yield-to-maturity" title="Link to this heading">#</a></h2>
+<p>As noted above, the <span class="math notranslate nohighlight">\(\text{ytm}\)</span> of a bond making a single payment may be directly calculated. There is no simple calculation for bonds that make multiple payments.  A trial and error process is required.  A practical way to implement the technique is a comparison of the errors of two initial guesses and then adjusting subsequent guesses based on the average rate of change between the errors and the guesses.</p>
+<p>For functions that are differentiable, a more mathematically efficient version of this trial-and-error technique exists: the Newton-Raphson method, that utilizes a first-order Taylor series approximation of the function.
+<br><br></p>
+<p>       <span class="math notranslate nohighlight">\(\text{f}(x+\Delta x) \thickapprox \text{f}(x) +\large\frac{d\text{f}(x)}{dx}\times\Delta x\)</span></p>
+<br>
+<p>The first derivative of the function is <span class="math notranslate nohighlight">\(\Large\frac{d\text{f}(x)}{dx}\)</span> at <span class="math notranslate nohighlight">\(x\)</span>, and <span class="math notranslate nohighlight">\(\Delta x\)</span> is the change in <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<br>
+<p>As <span class="math notranslate nohighlight">\(\large\Delta \text{x}\)</span> goes to zero, the error of the approximation goes to zero.</p>
+<br>
+<p>The Newton-Raphson method improves each guess by scaling the error by the first derivative of the function at the previous guess:</p>
+<p>     <span class="math notranslate nohighlight">\(\text{next guess} =\text{previous guess}+\Large \frac{\text{f}(x)-\text{f}(\text{previous guess})}{\frac{df(\text{previous guess})}{dx}}\)</span></p>
+</section>
+<section id="a-three-bond-example">
+<h2>A three bond example<a class="headerlink" href="#a-three-bond-example" title="Link to this heading">#</a></h2>
+<p>The yield to maturity on all three bonds is assumed to be 5% per annum. Coupon payments are semi-annual. The initial guess for each bond is 4%.
+<br></p>
+<p>The prices of the bonds at the actual spot rate of 5% and the initial guess of 4% are calculated and shown in the following table.</p>
+<br>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Bond</p></th>
+<th class="head"><p>Price At 5%</p></th>
+<th class="head"><p>Price At 4%</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>   <strong>six-month zero coupon</strong></p></td>
+<td><p>  <strong>$97.53</strong></p></td>
+<td><p>  <strong>$98.02</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>   <strong>one-year zero coupon</strong></p></td>
+<td><p>  <strong>$95.12</strong></p></td>
+<td><p>  <strong>$96.08</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>   <strong>one-year coupon rate 5</strong></p></td>
+<td><p>  <strong>$99.94</strong></p></td>
+<td><p>  <strong>$100.93</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<p>The pricing errors are scaled by the derivatives evaluated at the initial guess of 4%.  The next guess is augmented by the scaled pricing errors.</p>
+<br>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Bond</p></th>
+<th class="head"><p>Pricing Error</p></th>
+<th class="head"><p>Derivative</p></th>
+<th class="head"><p>Delta Guess</p></th>
+<th class="head"><p>Updated Guess</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>   <strong>six-month zero coupon</strong></p></td>
+<td><p>  <strong>-$0.49</strong></p></td>
+<td><p>  <strong>-49.00</strong></p></td>
+<td><p>  <strong>1.0%</strong></p></td>
+<td><p>  <strong>5.0%</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>   <strong>one-year zero coupon</strong></p></td>
+<td><p>  <strong>-$0.96</strong></p></td>
+<td><p>  <strong>-96.88</strong></p></td>
+<td><p>  <strong>1.0%</strong></p></td>
+<td><p>  <strong>5.0%</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>   <strong>one-year coupon rate 5</strong></p></td>
+<td><p>  <strong>-$0.99</strong></p></td>
+<td><p>  <strong>-99.71</strong></p></td>
+<td><p>  <strong>1.0%</strong></p></td>
+<td><p>  <strong>5.0%</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<p>For all three bonds a solution is reached within one iteration.</p>
+</section>
+<section id="application-make-the-initial-guess-7-and-calculate-two-new-guesses-for-the-following-bonds">
+<h2><font color='green'>Application: Make the initial guess 7% and calculate two new guesses for the following bonds:</font><a class="headerlink" href="#application-make-the-initial-guess-7-and-calculate-two-new-guesses-for-the-following-bonds" title="Link to this heading">#</a></h2>
+<div style="
+    border-left: 12px solid green;
+    line-height: 1.5;
+    padding: 15px">
+<br>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Maturity</p></th>
+<th class="head"><p>Coupon</p></th>
+<th class="head"><p>Spot Rate</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>   Six Months</p></td>
+<td><p>   0</p></td>
+<td><p> 4%</p></td>
+</tr>
+<tr class="row-odd"><td><p>   One Year</p></td>
+<td><p>   0</p></td>
+<td><p> 5%</p></td>
+</tr>
+<tr class="row-even"><td><p>   One Year</p></td>
+<td><p>   5</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>see <a class="reference external" href="https://colab.research.google.com/drive/1ZMO2gJ56kCFUXS4zUhljrW5Cj6GESuKp">Chapter Six Hints: Make the initial quess 7%</a>, and check the <a class="reference external" href="https://colab.research.google.com/drive/1VJzd020F3lfs-1cP2EAS2fBSKazIPYOC#scrollTo=vnPEV819ilWL">expected results here</a>.</p>
+</div>
+</section>
+<section id="take-a-deeper-dive-with-ai">
+<h2><font color='green'>Take a deeper dive with AI</font><a class="headerlink" href="#take-a-deeper-dive-with-ai" title="Link to this heading">#</a></h2>
+<section id="some-suggestions-to-get-you-started-with-gemini">
+<h3>Some suggestions to get you started with Gemini.<a class="headerlink" href="#some-suggestions-to-get-you-started-with-gemini" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>What’s the relation between the yield to maturity and the rate return earned from holding a bond until it matures?</strong></p></li>
+<li><p><strong>Is it OK to use the Newton-Raphson technique to solve for the yield to maturity of a Treasury bill?</strong></p></li>
+<li><p><strong>Can the Newton-Raphson technique be used to solve for the yield to maturity with both continuous and discrete compounding?</strong></p></li>
+</ol>
+</section>
+<section id="copy-and-paste-the-questions-here">
+<h3><a class="reference external" href="https://gemini.google.com">Copy and paste the questions here</a><a class="headerlink" href="#copy-and-paste-the-questions-here" title="Link to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "PatrickJHess/Vol-3-Chap-5",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Chapter_Six_Highlights.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Yields To Maturity</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Calculating_Yields_To_Maturity.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Calculating Yields to Maturity (YTM)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formula-and-calculation">Formula and Calculation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-yield-to-maturity">Limitations of Yield To Maturity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-yield-to-maturity">Calculating The Yield To Maturity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-three-bond-example">A three bond example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-make-the-initial-guess-7-and-calculate-two-new-guesses-for-the-following-bonds"><font color="green">Application: Make the initial guess 7% and calculate two new guesses for the following bonds:</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-deeper-dive-with-ai"><font color="green">Take a deeper dive with AI</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-suggestions-to-get-you-started-with-gemini">Some suggestions to get you started with Gemini.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-and-paste-the-questions-here">Copy and paste the questions here</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Financial Python
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025 by Arbitrage Partners..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
