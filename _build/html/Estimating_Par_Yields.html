@@ -1,0 +1,1737 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Calculating Par Yields &#8212; Basic Concepts of Fixed Income:Par Yields</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Estimating_Par_Yields';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Basic Concepts of Fixed Income:Par Yields</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Financial Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concepts of Fixed Income: Chapter Five</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Chapter_Six_Highlights.html">Yields To Maturity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Define_YTM.html">What Is The Yield To Maturity And Why It Matters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Calculating_Yields_To_Maturity.html">Calculating Yields to Maturity (YTM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter_Six_Summary.html">Summarizing The Results of Calculating Yields To Maturity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imported_functions_Six.html">Functions Imported by Chapter Five.</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/PatrickJHess/Vol-3-Chap-5/master?urlpath=tree/Estimating_Par_Yields.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/PatrickJHess/Vol-3-Chap-5/blob/master/Estimating_Par_Yields.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/PatrickJHess/Vol-3-Chap-5/issues/new?title=Issue%20on%20page%20%2FEstimating_Par_Yields.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Estimating_Par_Yields.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Calculating Par Yields</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-longest-maturity-bond-to-calculate-par-yields">Using the longest maturity bond to calculate Par Yields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing libraries, modules, and functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding a custom module and importing functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-used-to-estimate-the-term-structure">Data Used To Estimate The Term Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-zero-prices-for-149-unique-dates-with-304-bonds-of-bond-data-dataframe">Estimate zero prices for 149 unique dates with 304 bonds of bond_data DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-payment-dates-for-the-bond-that-matures-on-january-31-st-2030">Get payment dates for the bond that matures on January 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2030.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-first-payment-date-as-an-assumed-settlement-date">Use the first payment date as an assumed settlement date</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-forward-zero-prices">Calculating forward zero prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-calculate-the-forward-zero-prices-for-the-bonds"><font color="green">Application: Calculate the forward zero prices for the bonds</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-pandas-cumsum-method-to-calculate-par-yields">Using the Pandas <font color="green">cumsum</font> method to calculate par yields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Calculating Par Yields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-treasury-estimates-of-par-yields">U.S. Treasury estimates of par yields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-u-s-treasury-estimates-to-our-estimates-with-the-january-31-st-2030-bond">Comparing U.S. Treasury estimates to our estimates with the January 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2030 bond.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-u-s-treasury-maturity-dates">Determine U.S. Treasury maturity dates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-u-s-treasury-maturity-dates-and-create-an-index-that-aligns-with-our-estimates">Select U.S. Treasury maturity dates and create an index that aligns with our estimates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-relevant-u-s-treasury-data-and-set-the-index">Get relevant U.S. Treasury data and set the index.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-the-comparison">Summarizing the comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-exercise"><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="calculating-par-yields">
+<h1>Calculating Par Yields<a class="headerlink" href="#calculating-par-yields" title="Link to this heading">#</a></h1>
+<section id="using-the-longest-maturity-bond-to-calculate-par-yields">
+<h2>Using the longest maturity bond to calculate Par Yields<a class="headerlink" href="#using-the-longest-maturity-bond-to-calculate-par-yields" title="Link to this heading">#</a></h2>
+<p>In this example, we use the bond with the longest maturity in our sample, January 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2030, to estimate the par yield for each of its payment dates. The settlement date for our bond sample is January 21<span class="math notranslate nohighlight">\(^{st}\)</span> 2025, but this date is inconvenient for our calculations.</p>
+<p>To ensure par yield estimates are consistently calculated at six-month intervals, we base our analysis on forward prices beginning January 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2025. This approach results in “forward par yields,”; calculations performed ten days after the bond price settlement date.  Other examples coordinate the settlement dates with maturity dates.</p>
+<p>As outlined in Chapter One, forward rates are derived from the differences in the natural logarithm of zero prices. In a similar fashion, forward zero prices are calculated by dividing the longer maturity zero price by the shorter one. In the January 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2030 example, all zero prices used for calculating the par yields are normalized by 0.998886-the January 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2025 zero price.</p>
+</section>
+<section id="importing-libraries-modules-and-functions">
+<h2>Importing libraries, modules, and functions<a class="headerlink" href="#importing-libraries-modules-and-functions" title="Link to this heading">#</a></h2>
+<p>As in earlier chapters of the volume, modules that are included in the standard Python library are imported. When necessary, other modules or libraries are installed before they are imported.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import sys
+import requests
+from types import ModuleType
+from datetime import datetime, date
+
+try:
+    import numpy as np
+except:
+    !pip install numpy
+    import numpy as np
+
+try:
+    import pandas as pd
+except:
+    !pip install pandas
+    import pandas as pd
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import OS to interact with local computer operating system</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModuleType</span>
+<span class="c1"># Import the datetime and date classes from the datetime module</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span>
+
+<span class="c1"># Import the NumPy library for numerical operations, commonly aliased as np.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>numpy
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Import the pandas library for data manipulation and analysis, aliased as pd.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pandas
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="adding-a-custom-module-and-importing-functions">
+<h3>Adding a custom module and importing functions<a class="headerlink" href="#adding-a-custom-module-and-importing-functions" title="Link to this heading">#</a></h3>
+<p>The notebook utilizes the custom module, <strong>module_basic_concepts_fixed_income</strong>, sourced from Dropbox and named <strong>basic_concepts_fixed_income</strong>. This module provides three core functions to streamline the analysis and focus on financial concepts:</p>
+<ul class="simple">
+<li><p><strong>accrued_interest</strong> (Chapter Two): This function calculates the accrued interest on a settlement date.</p>
+<ul>
+<li><p><a class="reference external" href="https://patrickjhess.github.io/Imported-Functions/accrued_interest.html#accrued-interest-is-a-helper-function-that-calculates-accrued-interest">View Details</a></p></li>
+</ul>
+</li>
+<li><p><strong>create_payoff_matrix</strong> (Chapter Four ): This function calculates the payoff matrix required to bootstrap the term structure with coupon bonds.</p>
+<ul>
+<li><p><a class="reference external" href="https://patrickjhess.github.io/Imported-Functions/create_payoff_matrix.html">View Details</a></a></p></li>
+</ul>
+</li>
+<li><p><strong>bond_pay_data</strong> (Chapter Three): Returns the payment dates and amounts.</p>
+<ul>
+<li><p><a class="reference external" href="https://patrickjhess.github.io/Imported-Functions/bond_pay_data.html#bond-pay-data-helper-function">View Details</a></p></li>
+</ul>
+</li>
+</ul>
+<p>The module also contains various supporting helper functions, and it automatically manages the import and, if required, installation of necessary libraries and modules. This structure allows the user to concentrate fully on financial principles rather than complex Python implementation details.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">basic_concepts_fixed_income</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">accrued_interest</span><span class="p">,</span>
+                                         <span class="n">create_payoff_matrix</span><span class="p">,</span>
+                                         <span class="n">bond_pay_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the URL of the Python module to be downloaded from Dropbox.</span>
+<span class="c1"># The &#39;dl=1&#39; parameter in the URL forces a direct download of the file content.</span>
+<span class="n">url</span><span class="o">=</span> <span class="s1">&#39;https://www.dropbox.com/scl/fi/4y5hjxlfphh1ngvbgo77q/</span><span class="se">\</span>
+<span class="s1">module_-basic_concepts_fixed_income.py?rlkey=6oxi7mgka42veaat79hcv8boz&amp;st=87sztshr&amp;dl=1&#39;</span>
+<span class="n">module_name</span><span class="o">=</span><span class="s1">&#39;basic_concepts_fixed_income&#39;</span>
+<span class="c1"># Send an HTTP GET request to the URL and store the server&#39;s response.</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">response</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+  <span class="c1"># Raise an exception for bad status codes (like 404 Not Found)</span>
+  <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+  <span class="n">module</span><span class="o">=</span> <span class="n">ModuleType</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
+  <span class="c1">#Code contained in response.text executed</span>
+  <span class="n">exec</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+  <span class="c1"># Module added to sys</span>
+  <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span><span class="o">=</span><span class="n">module</span>
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error: Could not fetch module from URL. </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error: Failed to execute or import the module. </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Now that &#39;basic_concepts_fixed_income&#39; exists in the notebook, import the specific functions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">basic_concepts_fixed_income</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">accrued_interest</span><span class="p">,</span>
+                                         <span class="n">create_payoff_matrix</span><span class="p">,</span>
+                                         <span class="n">bond_pay_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-used-to-estimate-the-term-structure">
+<h2>Data Used To Estimate The Term Structure<a class="headerlink" href="#data-used-to-estimate-the-term-structure" title="Link to this heading">#</a></h2>
+<p>The 304 U.S. Treasury securities data in the sheet ‘Fidelity Data’ of the Excel workbook ‘Bond Price Data’ are used to estimate the zero prices for five years on the settlement date January 21<span class="math notranslate nohighlight">\(^{st}\)</span> 2025.<span class="math notranslate nohighlight">\(
+^{1}\)</span></p>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(^{1}\)</span> The process of accessing the data and estimating the term structure is also presented in <a class="reference external" href="https://patrickjhess.github.io/Vol-3-Chap-4/Bootstrapping_The_Term_Structure_With_304_Bonds.html">Chapter Four: Bootstrapping The Term Structure With 304 Bonds</a>.</p>
+<p>This Fidelity data is downloaded from DropBox and loaded into a Pandas DataFrame using the Panda’s <font color='green'>read_excel</font> method.<span class="math notranslate nohighlight">\(^{2}\)</span></p>
+<p>Three arguments are passed to the method:</p>
+<ol class="arabic simple">
+<li><p>The URL address (<font color='green'>url</font>) is required.</p></li>
+<li><p>Assigning the index column is optional. The maturity dates, located in the first column, are set as the index of the DataFrame  (<font color='green'>index_col=’Maturity Date’</font>).</p></li>
+<li><p>The worksheet name defaults to the first worksheet. The worksheet’s name, ‘Fidelity Data’, is the assigned sheet (<font color='green'>sheet_name=’Fidelity Data’</font>)</p></li>
+</ol>
+<p>The <font color='green'>display</font>  function shows the first and last five rows confirming that data has been successfully accessed.</p>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(^{2}\)</span> <a href='https://patrickjhess.github.io/Introduction-To-Python-For-Financial-Python/An_Introduction_To_Pandas.html#dataframes-csv-and-excel-files'>Pandas method read_excel</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#The full file path.</span>
+<span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://www.dropbox.com/scl/fi/lgnaj41bt8o9sv5a63rr1/</span><span class="se">\</span>
+<span class="s1">bond_data_jan21_2025.xlsx?rlkey=twjzkcqo0g2ahvot78518ti4x&amp;st=ihc5feog&amp;dl=1&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Attempting to load data from: </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">#Load the data from Excel, using the first column as the index.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">bond_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Maturity Date&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Fidelity Data&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Display the first and last 5 rows of the loaded DataFrame to verify it worked.</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">bond_data</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">ERROR: File not found.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please check that the &#39;folder&#39; and &#39;file&#39; variables are spelled correctly&#39;</span><span class="se">\</span>
+<span class="s2">&#39; and that the file exists in that location.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting to load data from: https://www.dropbox.com/scl/fi/lgnaj41bt8o9sv5a63rr1/bond_data_jan21_2025.xlsx?rlkey=twjzkcqo0g2ahvot78518ti4x&amp;st=ihc5feog&amp;dl=1
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Description</th>
+      <th>Coupon</th>
+      <th>Price Bid</th>
+      <th>Price Ask</th>
+      <th>Bid Size</th>
+      <th>Ask Size</th>
+    </tr>
+    <tr>
+      <th>Maturity Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2025-01-28</th>
+      <td>UNITED STATES TREAS BILLS ZERO CPN       0.000...</td>
+      <td>0.000</td>
+      <td>99.929</td>
+      <td>99.930</td>
+      <td>100000.0</td>
+      <td>100000.0</td>
+    </tr>
+    <tr>
+      <th>2025-01-30</th>
+      <td>UNITED STATES TREAS BILLS ZERO CPN       0.000...</td>
+      <td>0.000</td>
+      <td>99.906</td>
+      <td>99.907</td>
+      <td>40000.0</td>
+      <td>40000.0</td>
+    </tr>
+    <tr>
+      <th>2025-01-31</th>
+      <td>UNITED STATES TREAS SER U-2025          1.3750...</td>
+      <td>1.375</td>
+      <td>99.921</td>
+      <td>99.934</td>
+      <td>60000.0</td>
+      <td>60000.0</td>
+    </tr>
+    <tr>
+      <th>2025-01-31</th>
+      <td>UNITED STATES TREAS SER AW-2025         4.1250...</td>
+      <td>4.125</td>
+      <td>99.988</td>
+      <td>99.997</td>
+      <td>60000.0</td>
+      <td>60000.0</td>
+    </tr>
+    <tr>
+      <th>2025-01-31</th>
+      <td>UNITED STATES TREAS SER G-2025          2.5000...</td>
+      <td>2.500</td>
+      <td>99.953</td>
+      <td>99.965</td>
+      <td>60000.0</td>
+      <td>60000.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2029-11-30</th>
+      <td>UNITED STATES TREAS SER AG-2029         4.1250...</td>
+      <td>4.125</td>
+      <td>98.910</td>
+      <td>98.914</td>
+      <td>100000.0</td>
+      <td>100000.0</td>
+    </tr>
+    <tr>
+      <th>2029-11-30</th>
+      <td>UNITED STATES TREAS SER S-2029          3.8750...</td>
+      <td>3.875</td>
+      <td>97.763</td>
+      <td>97.782</td>
+      <td>40000.0</td>
+      <td>40000.0</td>
+    </tr>
+    <tr>
+      <th>2029-12-31</th>
+      <td>UNITED STATES TREAS SER T-2029          3.8750...</td>
+      <td>3.875</td>
+      <td>97.734</td>
+      <td>97.738</td>
+      <td>65000.0</td>
+      <td>65000.0</td>
+    </tr>
+    <tr>
+      <th>2029-12-31</th>
+      <td>UNITED STATES TREAS SER AH-2029         4.3750...</td>
+      <td>4.375</td>
+      <td>99.988</td>
+      <td>99.989</td>
+      <td>7000.0</td>
+      <td>7000.0</td>
+    </tr>
+    <tr>
+      <th>2030-01-31</th>
+      <td>UNITED STATES TREAS SER G-2030          3.5000...</td>
+      <td>3.500</td>
+      <td>95.994</td>
+      <td>96.011</td>
+      <td>16000.0</td>
+      <td>16000.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>304 rows × 6 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="estimate-zero-prices-for-149-unique-dates-with-304-bonds-of-bond-data-dataframe">
+<h2>Estimate zero prices for 149 unique dates with 304 bonds of bond_data DataFrame<a class="headerlink" href="#estimate-zero-prices-for-149-unique-dates-with-304-bonds-of-bond-data-dataframe" title="Link to this heading">#</a></h2>
+<p>The term structure is estimated for the 149 unique payment dates of the <font color='green'>bond_data</font> DataFrame.  The <font color='green'>accrued_interest</font> calculates the transaction prices; and <font color='green'>create_payoff_matrix</font>, creates the the payoff matrix (columns for the unique dates and payoff rows for the bonds).  The Pandas <font color='green'>apply</font> add the <font color='green'>Accrued</font> column to the <font color='green'>bond_data</font> DataFrame</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the settlement date for the data is Jan 21, 2025</span>
+<span class="n">settlement</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
+<span class="c1"># apply the accrued_interest function to the DataFrame</span>
+<span class="n">bond_data</span><span class="p">[</span><span class="s1">&#39;Accrued&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bond_data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">accrued_interest</span><span class="p">(</span>
+        <span class="n">maturity</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="c1"># Assuming index is maturity</span>
+        <span class="n">coupon</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Coupon&#39;</span><span class="p">],</span>
+        <span class="n">settlement</span><span class="o">=</span><span class="n">settlement</span><span class="p">,</span>
+        <span class="n">freq</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">day_type</span><span class="o">=</span><span class="s1">&#39;Actual/Actual&#39;</span>
+    <span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="c1"># Calculate transaction prices</span>
+<span class="n">transaction_prices</span><span class="o">=</span><span class="p">((</span><span class="n">bond_data</span><span class="p">[</span><span class="s1">&#39;Price Bid&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">bond_data</span><span class="p">[</span><span class="s1">&#39;Price Ask&#39;</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span>
+                    <span class="n">bond_data</span><span class="p">[</span><span class="s1">&#39;Accrued&#39;</span><span class="p">])</span>
+
+<span class="c1"># Create payoff matrix</span>
+<span class="n">payoffs_304</span><span class="p">,</span><span class="n">column_dates_304</span><span class="o">=</span><span class="n">create_payoff_matrix</span><span class="p">(</span><span class="n">bond_data</span><span class="p">,</span><span class="n">settlement</span><span class="o">=</span><span class="n">settlement</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Estimate the present value factors/zero prices with least squares</span>
+<span class="n">zero_prices_304</span><span class="p">,</span><span class="n">ss2_304</span><span class="p">,</span><span class="n">rank_304</span><span class="p">,</span><span class="n">colInfo_304</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">payoffs_304</span><span class="p">,</span><span class="n">transaction_prices</span><span class="p">)</span>
+
+<span class="c1"># Maturity of the bonds in years</span>
+<span class="n">maturity_years</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">colInfo_304</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;datetime64[D]&#39;</span><span class="p">)</span><span class="o">-</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="n">settlement</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">/</span><span class="mf">365.25</span>
+
+<span class="c1"># Continuously compounded annualized spot rates</span>
+<span class="n">spot_rates_304</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">zero_prices_304</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">maturity_years</span><span class="p">)</span>
+
+<span class="c1"># Continuously compounded annualized forward rates</span>
+<span class="n">forward_rates_304</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">zero_prices_304</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">maturity_years</span><span class="p">)</span>
+<span class="n">forward_rates_304</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">forward_rates_304</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+<span class="c1"># Create a DataFrame of least squares present value estimates and display results</span>
+<span class="c1"># First a dictionary</span>
+<span class="n">bonds_304</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Zero Prices: 304&#39;</span><span class="p">:</span><span class="n">zero_prices_304</span><span class="p">,</span>
+           <span class="s1">&#39;Spot Rates: 304&#39;</span><span class="p">:</span><span class="n">spot_rates_304</span><span class="p">,</span>
+           <span class="s1">&#39;Forward Rates: 304&#39;</span><span class="p">:</span><span class="n">forward_rates_304</span><span class="p">}</span>
+
+<span class="c1"># Then a DataFrame</span>
+<span class="n">df_304</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">bonds_304</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">column_dates_304</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_304</span><span class="p">)</span>
+
+<span class="c1"># Create a DataFrame of summary statistics and display results</span>
+<span class="c1"># First a dictionary</span>
+<span class="n">summary_304</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Average Sum Squared Errors&#39;</span><span class="p">:</span><span class="n">ss2_304</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">bond_data</span><span class="p">),</span>
+             <span class="s1">&#39;Payoff Rank&#39;</span><span class="p">:</span><span class="n">rank_304</span><span class="p">,</span>
+             <span class="s1">&#39;Column Max Info&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">colInfo_304</span><span class="p">),</span>
+             <span class="s1">&#39;Column Min Info&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">colInfo_304</span><span class="p">)}</span>
+<span class="c1"># Then a DataFrame</span>
+<span class="n">df_summary_304</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">summary_304</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Summary Statistics&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_summary_304</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_16985/490079655.py:22: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  zero_prices_304,ss2_304,rank_304,colInfo_304=np.linalg.lstsq(payoffs_304,transaction_prices)
+/tmp/ipykernel_16985/490079655.py:32: RuntimeWarning: divide by zero encountered in true_divide
+  forward_rates_304=-np.diff(np.log(zero_prices_304))/np.diff(maturity_years)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Zero Prices: 304</th>
+      <th>Spot Rates: 304</th>
+      <th>Forward Rates: 304</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2025-01-28</th>
+      <td>0.999295</td>
+      <td>-0.000013</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2025-01-30</th>
+      <td>0.999065</td>
+      <td>-0.000017</td>
+      <td>-0.004946</td>
+    </tr>
+    <tr>
+      <th>2025-01-31</th>
+      <td>0.998886</td>
+      <td>-0.000020</td>
+      <td>-0.065439</td>
+    </tr>
+    <tr>
+      <th>2025-02-04</th>
+      <td>0.998475</td>
+      <td>-0.000028</td>
+      <td>-0.050108</td>
+    </tr>
+    <tr>
+      <th>2025-02-06</th>
+      <td>0.998240</td>
+      <td>-0.000032</td>
+      <td>inf</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2029-10-31</th>
+      <td>0.812875</td>
+      <td>-0.003782</td>
+      <td>inf</td>
+    </tr>
+    <tr>
+      <th>2029-11-15</th>
+      <td>0.809539</td>
+      <td>-0.003857</td>
+      <td>inf</td>
+    </tr>
+    <tr>
+      <th>2029-11-30</th>
+      <td>0.809936</td>
+      <td>-0.003848</td>
+      <td>-inf</td>
+    </tr>
+    <tr>
+      <th>2029-12-31</th>
+      <td>0.806965</td>
+      <td>-0.003915</td>
+      <td>inf</td>
+    </tr>
+    <tr>
+      <th>2030-01-31</th>
+      <td>0.803448</td>
+      <td>-0.003995</td>
+      <td>inf</td>
+    </tr>
+  </tbody>
+</table>
+<p>149 rows × 3 columns</p>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Summary Statistics</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Average Sum Squared Errors</th>
+      <td>0.011753</td>
+    </tr>
+    <tr>
+      <th>Payoff Rank</th>
+      <td>149.000000</td>
+    </tr>
+    <tr>
+      <th>Column Max Info</th>
+      <td>267.431046</td>
+    </tr>
+    <tr>
+      <th>Column Min Info</th>
+      <td>100.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="get-payment-dates-for-the-bond-that-matures-on-january-31-st-2030">
+<h2>Get payment dates for the bond that matures on January 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2030.<a class="headerlink" href="#get-payment-dates-for-the-bond-that-matures-on-january-31-st-2030" title="Link to this heading">#</a></h2>
+<p>Because the January 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2030 bond is used to estimate the zero prices, an estimated zero price exists for each of its semi-annual payment dates. The payment dates are calculated using the  <font color='green'>bond_pay_data</font> function.  Recall that this function relies upon the functions <font color='green'>scheduled_pay_dates</font> and <font color='green'>adjust_bond_pay_dates</font>.  All three functions were developed in Chapter Three.</p>
+<p>The arguments of <font color='green'>bond_pay_data</font> are:</p>
+<ul class="simple">
+<li><p><strong>settlement</strong> assigned the date value of January 21<span class="math notranslate nohighlight">\(^{st}\)</span> 2025.</p></li>
+<li><p><strong>maturity</strong> assigned the date value of January 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2030.</p></li>
+<li><p><strong>coupon</strong> because we are only concerned with dates, any value greater than zero may be assigned.  In our example we have assigned 0.01</p></li>
+<li><p><strong>freq</strong> assigned 2 for semi-annual payment frequency.</p></li>
+</ul>
+<p>The function returns arrays of payment dates and amounts.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pay_dates_all</span><span class="p">,</span><span class="n">_</span><span class="o">=</span><span class="n">bond_pay_data</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="n">settlement</span><span class="o">=</span><span class="n">settlement</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pay_dates_all</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use bond_pay_data function to return the full payment date array</span>
+<span class="n">settlement</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
+<span class="n">coupon</span><span class="o">=</span><span class="mf">0.01</span>
+<span class="n">maturity</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2030</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+
+<span class="c1"># function returns tuple of two arrays (dates,amounts)</span>
+<span class="n">pay_data</span><span class="o">=</span><span class="n">bond_pay_data</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span><span class="n">coupon</span><span class="p">,</span><span class="n">settlement</span><span class="o">=</span><span class="n">settlement</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># only conerned with payment dates</span>
+<span class="n">pay_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([datetime.date(2025, 1, 31), datetime.date(2025, 7, 31),
+       datetime.date(2026, 2, 2), datetime.date(2026, 7, 31),
+       datetime.date(2027, 2, 1), datetime.date(2027, 8, 2),
+       datetime.date(2028, 1, 31), datetime.date(2028, 7, 31),
+       datetime.date(2029, 1, 31), datetime.date(2029, 7, 31),
+       datetime.date(2030, 1, 31)], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="use-the-first-payment-date-as-an-assumed-settlement-date">
+<h2>Use the first payment date as an assumed settlement date<a class="headerlink" href="#use-the-first-payment-date-as-an-assumed-settlement-date" title="Link to this heading">#</a></h2>
+<p>To maintain alignment for semi-annual (six-month) par yield calculations, we use the first coupon payment date as the assumed settlement date. By asigning the settlement date as January 31, 2025 the payment date series skips the first date and begins with July 31, 2025. Using our forward zero prices allows us to  estimate par yields for equal-sized six-month periods beginning January 31, 2025.</p>
+</section>
+<section id="calculating-forward-zero-prices">
+<h2>Calculating forward zero prices<a class="headerlink" href="#calculating-forward-zero-prices" title="Link to this heading">#</a></h2>
+<p>Forward zero prices are calculated at six-month intervals, aligning with the first bond payment date which is six months after the assumed settlement date.</p>
+<p>To determine these prices, the forward prices corresponding to the forward pay dates are identified. These prices are then divided by the spot price corresponding to the assumed settlement date.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># loc attribute selects the zero price estimates starting at second date</span>
+<span class="n">matching_zero_prices</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df_304</span><span class="p">[</span><span class="s1">&#39;Zero Prices: 304&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pay_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">:]])</span>
+
+<span class="c1"># loc attribute selects the zero price of first date for normalization</span>
+<span class="n">normalizing_zero_price</span><span class="o">=</span> <span class="n">df_304</span><span class="p">[</span><span class="s1">&#39;Zero Prices: 304&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pay_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
+
+<span class="c1"># forward zero prices calculated</span>
+<span class="n">forward_zero_prices</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">matching_zero_prices</span><span class="o">/</span><span class="n">normalizing_zero_price</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Forward Zero Prices&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">forward_zero_prices</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-31    0.979138
+2026-02-02    0.958690
+2026-07-31    0.938935
+2027-02-01    0.919015
+2027-08-02    0.899549
+2028-01-31    0.879982
+2028-07-31    0.860395
+2029-01-31    0.841154
+2029-07-31    0.822730
+2030-01-31    0.804344
+Name: Forward Zero Prices, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="application-calculate-the-forward-zero-prices-for-the-bonds">
+<h2><font color='green'>Application: Calculate the forward zero prices for the bonds</font><a class="headerlink" href="#application-calculate-the-forward-zero-prices-for-the-bonds" title="Link to this heading">#</a></h2>
+<div style="
+    border-left: 12px solid green;
+    line-height: 1.5;
+    padding: 15px">
+<br>
+Settlement date determined so that all payments occur at six-month candence.
+<br>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Maturity</p></th>
+<th class="head"><p>Coupon</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>   December 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2029</p></td>
+<td><p>   4.375</p></td>
+</tr>
+<tr class="row-odd"><td><p>   October 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2029</p></td>
+<td><p>   4.125</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Calculate forward rates for the unique payment dates of both bonds.</p>
+<p>see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Five_Hints.html#application-calculate-the-forward-zero-prices-for-the-bonds">Chapter Five Hints: Calculate the forward zero prices for the bonds</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Five_Results.html#application-calculate-the-forward-zero-prices-for-the-bonds">expected results here</a>.</p>
+</div></section>
+<section id="using-the-pandas-cumsum-method-to-calculate-par-yields">
+<h2>Using the Pandas <font color='green'>cumsum</font> method to calculate par yields<a class="headerlink" href="#using-the-pandas-cumsum-method-to-calculate-par-yields" title="Link to this heading">#</a></h2>
+<p>Pandas <font color='green'>cumsum</font> method computes the cumulative sum for a DataFrame’s columns or rows, as well as for a Series. For instance, the example below first generates a Series of integers and then outputs the result of applying this method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create the integer_series</span>
+<span class="n">integer_series</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="c1"># display the results of cumsum</span>
+<span class="n">integer_series</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1
+1    3
+2    6
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>Calculating Par Yields<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Calculating par yields is straightforward once bond payment dates are established. The Pandas <font color='green'>cumsum</font> method is convenient. The numerator of the par yield formula is one minus the forward zero price corresponding to the payment date, and the denominator is the cumulative sum of all forward zero prices up to and including the payment date.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate the numerator</span>
+<span class="n">one_minus_forward_zero_price</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">forward_zero_prices</span>
+
+<span class="c1"># cumsum to calculate the denominator</span>
+<span class="n">cumsum_forward_zero_prices</span><span class="o">=</span><span class="n">forward_zero_prices</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+
+<span class="c1"># calculate par_yield series and name it Par Yields</span>
+<span class="n">par_yields</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">one_minus_forward_zero_price</span><span class="o">/</span><span class="n">cumsum_forward_zero_prices</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Par Yields&#39;</span><span class="p">)</span>
+<span class="n">par_yields</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-31    0.042613
+2026-02-02    0.042635
+2026-07-31    0.042454
+2027-02-01    0.042671
+2027-08-02    0.042788
+2028-01-31    0.043053
+2028-07-31    0.043385
+2029-01-31    0.043658
+2029-07-31    0.043773
+2030-01-31    0.043948
+Name: Par Yields, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="u-s-treasury-estimates-of-par-yields">
+<h2>U.S. Treasury estimates of par yields<a class="headerlink" href="#u-s-treasury-estimates-of-par-yields" title="Link to this heading">#</a></h2>
+<p>The U.S. Treasury provides daily estimates of par yields for maturities ranging from one month to thirty years. These estimates are derived by interpolating the term structure between key dates, making it possible to determine yields for any maturity on any given date. The Treasury’s 2025 estimates are downloaded as a CSV file and are benchmarked against our par yield estimates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># url address for daily par yields in 2025</span>
+<span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://home.treasury.gov/resource-center/data-chart-center/interest-rates/</span><span class="se">\</span>
+<span class="s1">daily-treasury-rates.csv/2025/all?field_tdr_date_value=2025</span><span class="se">\</span>
+<span class="s1">&amp;type=daily_treasury_yield_curve&amp;page&amp;_format=csv&#39;</span>
+
+<span class="c1"># pandas method read_csv creates the DataFrame</span>
+<span class="n">us_treasury_par</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="c1">#display to confirm DataFrame creation</span>
+<span class="n">us_treasury_par</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1 Mo</th>
+      <th>1.5 Month</th>
+      <th>2 Mo</th>
+      <th>3 Mo</th>
+      <th>4 Mo</th>
+      <th>6 Mo</th>
+      <th>1 Yr</th>
+      <th>2 Yr</th>
+      <th>3 Yr</th>
+      <th>5 Yr</th>
+      <th>7 Yr</th>
+      <th>10 Yr</th>
+      <th>20 Yr</th>
+      <th>30 Yr</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>12/31/2025</th>
+      <td>3.74</td>
+      <td>3.75</td>
+      <td>3.67</td>
+      <td>3.67</td>
+      <td>3.63</td>
+      <td>3.59</td>
+      <td>3.48</td>
+      <td>3.47</td>
+      <td>3.55</td>
+      <td>3.73</td>
+      <td>3.94</td>
+      <td>4.18</td>
+      <td>4.79</td>
+      <td>4.84</td>
+    </tr>
+    <tr>
+      <th>12/30/2025</th>
+      <td>3.65</td>
+      <td>3.71</td>
+      <td>3.65</td>
+      <td>3.65</td>
+      <td>3.63</td>
+      <td>3.59</td>
+      <td>3.47</td>
+      <td>3.45</td>
+      <td>3.50</td>
+      <td>3.68</td>
+      <td>3.89</td>
+      <td>4.14</td>
+      <td>4.76</td>
+      <td>4.81</td>
+    </tr>
+    <tr>
+      <th>12/29/2025</th>
+      <td>3.69</td>
+      <td>3.70</td>
+      <td>3.70</td>
+      <td>3.68</td>
+      <td>3.66</td>
+      <td>3.59</td>
+      <td>3.48</td>
+      <td>3.45</td>
+      <td>3.51</td>
+      <td>3.67</td>
+      <td>3.88</td>
+      <td>4.12</td>
+      <td>4.75</td>
+      <td>4.80</td>
+    </tr>
+    <tr>
+      <th>12/26/2025</th>
+      <td>3.70</td>
+      <td>3.69</td>
+      <td>3.72</td>
+      <td>3.64</td>
+      <td>3.66</td>
+      <td>3.58</td>
+      <td>3.49</td>
+      <td>3.46</td>
+      <td>3.54</td>
+      <td>3.68</td>
+      <td>3.89</td>
+      <td>4.14</td>
+      <td>4.76</td>
+      <td>4.81</td>
+    </tr>
+    <tr>
+      <th>12/24/2025</th>
+      <td>3.72</td>
+      <td>3.73</td>
+      <td>3.74</td>
+      <td>3.69</td>
+      <td>3.67</td>
+      <td>3.59</td>
+      <td>3.50</td>
+      <td>3.47</td>
+      <td>3.56</td>
+      <td>3.70</td>
+      <td>3.91</td>
+      <td>4.15</td>
+      <td>4.75</td>
+      <td>4.79</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>01/08/2025</th>
+      <td>4.41</td>
+      <td>NaN</td>
+      <td>4.34</td>
+      <td>4.35</td>
+      <td>4.31</td>
+      <td>4.25</td>
+      <td>4.19</td>
+      <td>4.28</td>
+      <td>4.31</td>
+      <td>4.45</td>
+      <td>4.56</td>
+      <td>4.67</td>
+      <td>4.97</td>
+      <td>4.91</td>
+    </tr>
+    <tr>
+      <th>01/07/2025</th>
+      <td>4.42</td>
+      <td>NaN</td>
+      <td>4.35</td>
+      <td>4.35</td>
+      <td>4.31</td>
+      <td>4.24</td>
+      <td>4.19</td>
+      <td>4.30</td>
+      <td>4.33</td>
+      <td>4.46</td>
+      <td>4.57</td>
+      <td>4.67</td>
+      <td>4.97</td>
+      <td>4.91</td>
+    </tr>
+    <tr>
+      <th>01/06/2025</th>
+      <td>4.43</td>
+      <td>NaN</td>
+      <td>4.36</td>
+      <td>4.35</td>
+      <td>4.31</td>
+      <td>4.24</td>
+      <td>4.17</td>
+      <td>4.28</td>
+      <td>4.30</td>
+      <td>4.42</td>
+      <td>4.52</td>
+      <td>4.62</td>
+      <td>4.91</td>
+      <td>4.85</td>
+    </tr>
+    <tr>
+      <th>01/03/2025</th>
+      <td>4.44</td>
+      <td>NaN</td>
+      <td>4.35</td>
+      <td>4.34</td>
+      <td>4.31</td>
+      <td>4.25</td>
+      <td>4.18</td>
+      <td>4.28</td>
+      <td>4.32</td>
+      <td>4.41</td>
+      <td>4.51</td>
+      <td>4.60</td>
+      <td>4.88</td>
+      <td>4.82</td>
+    </tr>
+    <tr>
+      <th>01/02/2025</th>
+      <td>4.45</td>
+      <td>NaN</td>
+      <td>4.36</td>
+      <td>4.36</td>
+      <td>4.31</td>
+      <td>4.25</td>
+      <td>4.17</td>
+      <td>4.25</td>
+      <td>4.29</td>
+      <td>4.38</td>
+      <td>4.47</td>
+      <td>4.57</td>
+      <td>4.86</td>
+      <td>4.79</td>
+    </tr>
+  </tbody>
+</table>
+<p>249 rows × 14 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="comparing-u-s-treasury-estimates-to-our-estimates-with-the-january-31-st-2030-bond">
+<h2>Comparing U.S. Treasury estimates to our estimates with the January 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2030 bond.<a class="headerlink" href="#comparing-u-s-treasury-estimates-to-our-estimates-with-the-january-31-st-2030-bond" title="Link to this heading">#</a></h2>
+<p>There are two reasons that our estimtes will differ from those of the The U.S. Treasury:</p>
+<ol class="arabic simple">
+<li><p><strong>Settlement Date</strong>: The U.S. Treasury’s estimated settlement date is ten days earlier than the date used in our calculations, which rely on forward zero price estimates.</p></li>
+<li><p><strong>Maturity Dates</strong>: Our estimates use six-month intervals between July 31, 2025, and January 31, 2030, while the U.S. Treasury reports maturity dates spanning one month to thirty years.</p></li>
+</ol>
+<p>To compare our estimates with those of the U.S. Treasury, certain adjustments are necessary. The first step involves identifying the U.S. Treasury maturities reported for January 21, 2025. This is done by examining the index:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">us_treasury_par</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;01/21/2025&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">Index</span><span class="p">([</span><span class="s1">&#39;1 Mo&#39;</span><span class="p">,</span> <span class="s1">&#39;1.5 Month&#39;</span><span class="p">,</span> <span class="s1">&#39;2 Mo&#39;</span><span class="p">,</span> <span class="s1">&#39;3 Mo&#39;</span><span class="p">,</span> <span class="s1">&#39;4 Mo&#39;</span><span class="p">,</span> <span class="s1">&#39;6 Mo&#39;</span><span class="p">,</span> <span class="s1">&#39;1 Yr&#39;</span><span class="p">,</span> <span class="s1">&#39;2 Yr&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;3 Yr&#39;</span><span class="p">,</span> <span class="s1">&#39;5 Yr&#39;</span><span class="p">,</span> <span class="s1">&#39;7 Yr&#39;</span><span class="p">,</span> <span class="s1">&#39;10 Yr&#39;</span><span class="p">,</span> <span class="s1">&#39;20 Yr&#39;</span><span class="p">,</span> <span class="s1">&#39;30 Yr&#39;</span><span class="p">],</span>
+      <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;object&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>To confirm alignment with our estimates, we select and assign index values to approximate the maturity dates of our estimates:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ust_maturity_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;6 Mo&#39;</span><span class="p">,</span><span class="s1">&#39;1 Yr&#39;</span><span class="p">,</span><span class="s1">&#39;2 Yr&#39;</span><span class="p">,</span><span class="s1">&#39;3 Yr&#39;</span><span class="p">,</span><span class="s1">&#39;5 Yr&#39;</span><span class="p">]</span>
+<span class="n">ust_maturity_index</span><span class="o">=</span><span class="p">[</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span><span class="n">date</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">date</span><span class="p">(</span><span class="mi">2027</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">date</span><span class="p">(</span><span class="mi">2028</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span><span class="n">date</span><span class="p">(</span><span class="mi">2030</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">)]</span>
+
+</pre></div>
+</div>
+<p>The alignment isn’t perfect, but is close enough for a meaningful comparison</p>
+<section id="determine-u-s-treasury-maturity-dates">
+<h3>Determine U.S. Treasury maturity dates<a class="headerlink" href="#determine-u-s-treasury-maturity-dates" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display maturity dates</span>
+<span class="n">display</span><span class="p">(</span><span class="n">us_treasury_par</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;01/21/2025&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;1 Mo&#39;, &#39;1.5 Month&#39;, &#39;2 Mo&#39;, &#39;3 Mo&#39;, &#39;4 Mo&#39;, &#39;6 Mo&#39;, &#39;1 Yr&#39;, &#39;2 Yr&#39;,
+       &#39;3 Yr&#39;, &#39;5 Yr&#39;, &#39;7 Yr&#39;, &#39;10 Yr&#39;, &#39;20 Yr&#39;, &#39;30 Yr&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="select-u-s-treasury-maturity-dates-and-create-an-index-that-aligns-with-our-estimates">
+<h3>Select U.S. Treasury maturity dates and create an index that aligns with our estimates<a class="headerlink" href="#select-u-s-treasury-maturity-dates-and-create-an-index-that-aligns-with-our-estimates" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set matching maturities</span>
+<span class="n">ust_maturity_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;6 Mo&#39;</span><span class="p">,</span><span class="s1">&#39;1 Yr&#39;</span><span class="p">,</span><span class="s1">&#39;2 Yr&#39;</span><span class="p">,</span><span class="s1">&#39;3 Yr&#39;</span><span class="p">,</span><span class="s1">&#39;5 Yr&#39;</span><span class="p">]</span>
+
+<span class="c1"># Use approximate pay dates corresponding to our estimates</span>
+<span class="n">ust_maturity_index</span><span class="o">=</span><span class="p">[</span><span class="n">date</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span><span class="n">date</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">date</span><span class="p">(</span><span class="mi">2027</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">date</span><span class="p">(</span><span class="mi">2028</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span><span class="n">date</span><span class="p">(</span><span class="mi">2030</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">)]</span>
+<span class="n">ust_maturity_index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[datetime.date(2025, 7, 31),
+ datetime.date(2026, 2, 2),
+ datetime.date(2027, 2, 1),
+ datetime.date(2028, 1, 31),
+ datetime.date(2030, 1, 31)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-relevant-u-s-treasury-data-and-set-the-index">
+<h3>Get relevant U.S. Treasury data and set the index.<a class="headerlink" href="#get-relevant-u-s-treasury-data-and-set-the-index" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select U.S. Treasury estimates for Jan. 21 2025</span>
+<span class="n">ust_2025_1_21</span><span class="o">=</span><span class="n">us_treasury_par</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;01/21/2025&#39;</span><span class="p">]</span>
+<span class="c1"># display result</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ust_2025_1_21</span><span class="p">)</span>
+
+<span class="c1"># Create a series with matching maturities</span>
+<span class="n">ust_maturity_par_yields</span><span class="o">=</span><span class="n">ust_2025_1_21</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ust_maturity_dates</span><span class="p">]</span>
+
+<span class="c1"># Assign index the matching maturity dates</span>
+<span class="n">ust_maturity_par_yields</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="n">ust_maturity_index</span>
+<span class="c1">#display result</span>
+<span class="n">ust_maturity_par_yields</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 Mo         4.42
+1.5 Month     NaN
+2 Mo         4.35
+3 Mo         4.36
+4 Mo         4.33
+6 Mo         4.28
+1 Yr         4.21
+2 Yr         4.29
+3 Yr         4.33
+5 Yr         4.40
+7 Yr         4.49
+10 Yr        4.57
+20 Yr        4.87
+30 Yr        4.80
+Name: 01/21/2025, dtype: float64
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-07-31    4.28
+2026-02-02    4.21
+2027-02-01    4.29
+2028-01-31    4.33
+2030-01-31    4.40
+Name: 01/21/2025, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to match the U.S. Treasury’s presentation, our estimates are first scaled by multiplying them by 100 and rounding to two decimal places:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">scaled_par_yields</span> <span class="o">=</span> <span class="n">par_yields</span> <span class="o">*</span> <span class="mf">100.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To make a comparison between our estimated par yields and those from the U.S. Treasury, a DataFrame is constructed by concatenating the two par yield arrays.</p>
+<p>The arrays are combined using the Pandas <font color='green'>concat</font> method with the following arguments:</p>
+<ul class="simple">
+<li><p><strong>Series</strong>: The <font color='green'>scaled_par_yields</font> (our estimates) and <font color='green'>ust_maturity_par_yields</font> (U.S. Treasury’s par yields) are the Series being combined.</p></li>
+<li><p><strong>axis</strong>: Set to <font color='green'>1</font> to add the Series as new columns.</p></li>
+<li><p><strong>join</strong>: Set to <font color='green'>inner</font>` to include only the intersection of dates, ensuring data is present for both series.</p></li>
+</ul>
+<p>The resulting DataFrame is created with the following code:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">scaled_par_yields</span><span class="p">,</span> <span class="n">ust_maturity_par_yields</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># our estimates are scaled to be two digit percentage format</span>
+<span class="n">scaled_par_yields</span><span class="o">=</span><span class="p">(</span><span class="n">par_yields</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># use Pandas concat method to display a DataFrame of &#39;matching&#39; estimates</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">scaled_par_yields</span><span class="p">,</span><span class="n">ust_maturity_par_yields</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Par Yields</th>
+      <th>01/21/2025</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2025-07-31</th>
+      <td>4.26</td>
+      <td>4.28</td>
+    </tr>
+    <tr>
+      <th>2026-02-02</th>
+      <td>4.26</td>
+      <td>4.21</td>
+    </tr>
+    <tr>
+      <th>2027-02-01</th>
+      <td>4.27</td>
+      <td>4.29</td>
+    </tr>
+    <tr>
+      <th>2028-01-31</th>
+      <td>4.31</td>
+      <td>4.33</td>
+    </tr>
+    <tr>
+      <th>2030-01-31</th>
+      <td>4.39</td>
+      <td>4.40</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="summarizing-the-comparison">
+<h2>Summarizing the comparison<a class="headerlink" href="#summarizing-the-comparison" title="Link to this heading">#</a></h2>
+<p>Although our estimates differ from the U.S. Treasury, the differences are small- with only one estimate exceeding two basis points (five basis points at the one-year mark).</p>
+<p>We can improve the frequency of our estimates by incorporating additional payment dates in the calculation of par yields. You are asked to include three such dates in the Chapter Exercise.</p>
+<p>Adding these dates provides greater detail, but  gaps remain outside the 149 unique dates of our estimates. Chapter Nine addresses this “missing dates” problem by introducing the Nelson-Siegel model for estimating the term structure as a continuous function. This model provides estimates for any maturity date and is conceptually similar to that used by the U.S. Treasury.</p>
+</section>
+<section id="chapter-exercise">
+<h2><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span><a class="headerlink" href="#chapter-exercise" title="Link to this heading">#</a></h2>
+<p><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 0; margin-bottom: 0.5em; font-style: italic;
+"><big></big>
+</span></p>
+<div style="background-color:LightGray;
+    border-left: 12px solid green;
+    font-family: 'Garamond', serif;
+    font-size: 17px;
+    line-height: 1.5;
+    padding: 15px">
+<br>
+Calculate the par yields for the following bonds:
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Maturity</p></th>
+<th class="head"><p>Coupon</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>   December 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2029</p></td>
+<td><p>     4.375</p></td>
+</tr>
+<tr class="row-odd"><td><p>   October 31<span class="math notranslate nohighlight">\(^{th}\)</span> 2029</p></td>
+<td><p>     4.125</p></td>
+</tr>
+<tr class="row-even"><td><p>   January 31<span class="math notranslate nohighlight">\(^{th}\)</span> 2030</p></td>
+<td><p>     3.50</p></td>
+</tr>
+<tr class="row-odd"><td><p><br></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Five_Hints.html#chapter-exercise">Chapter Five Hints: Calculate the par yields for the following bonds.</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Five_Results.html#chapter-exercise">expected results here</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "PatrickJHess/Vol-3-Chap-5",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-longest-maturity-bond-to-calculate-par-yields">Using the longest maturity bond to calculate Par Yields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-modules-and-functions">Importing libraries, modules, and functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-custom-module-and-importing-functions">Adding a custom module and importing functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-used-to-estimate-the-term-structure">Data Used To Estimate The Term Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-zero-prices-for-149-unique-dates-with-304-bonds-of-bond-data-dataframe">Estimate zero prices for 149 unique dates with 304 bonds of bond_data DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-payment-dates-for-the-bond-that-matures-on-january-31-st-2030">Get payment dates for the bond that matures on January 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2030.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-first-payment-date-as-an-assumed-settlement-date">Use the first payment date as an assumed settlement date</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-forward-zero-prices">Calculating forward zero prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-calculate-the-forward-zero-prices-for-the-bonds"><font color="green">Application: Calculate the forward zero prices for the bonds</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-pandas-cumsum-method-to-calculate-par-yields">Using the Pandas <font color="green">cumsum</font> method to calculate par yields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Calculating Par Yields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-treasury-estimates-of-par-yields">U.S. Treasury estimates of par yields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-u-s-treasury-estimates-to-our-estimates-with-the-january-31-st-2030-bond">Comparing U.S. Treasury estimates to our estimates with the January 31<span class="math notranslate nohighlight">\(^{st}\)</span> 2030 bond.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-u-s-treasury-maturity-dates">Determine U.S. Treasury maturity dates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-u-s-treasury-maturity-dates-and-create-an-index-that-aligns-with-our-estimates">Select U.S. Treasury maturity dates and create an index that aligns with our estimates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-relevant-u-s-treasury-data-and-set-the-index">Get relevant U.S. Treasury data and set the index.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-the-comparison">Summarizing the comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-exercise"><span style="text-align: left; color:green; font-family: 'Franklin Gothic Medium', sans-serif; margin-top: 1.0em; margin-bottom: 0em; font-style: italic;">Chapter Exercise</span></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Financial Python
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025 by Arbitrage Partners..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
