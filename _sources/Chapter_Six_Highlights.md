@@ -35,14 +35,18 @@ This chapter's examples and discussions rely on the **Pandas** and **NumPy** lib
 
 **The chapter includes four  sections:**
 
-1. *What Is The Yield To Maturity adn Why It Matters*  defines and demonstrates how yield to maturity is calculated from bond prices.  
+1. *What Is The Yield To Maturity and Why It Matters*
+   *  defines and demonstrates how yield to maturity is calculated from bond prices.
+   *  an application applying the iterative search procedure.
+   *  an invitation to use AI to develop a deeper understnading about yield to maturity. 
 2. The  Jupyter notebook *Calculating Yields To Maturity*
    * develops three new functions:
         * <font color='green'>bond_pv</font> calculating the present value of a bond
-        * <font color='green'>single_newton_raphson</font> finds the root of function used to calculate yield to maturity
+        * <font color='green'>single_newton_raphson</font> finds the root of the present value function used to calculate yield to maturity
         * <font color='green'>calc_ytm</font> calulates the yield to maturity of bonds 
    * an exercise asking you to calculate the yields to maturity of three bonds
-4. *Yield to maturity and financial analysis.* summarizes the uses of yield to maturity.  
-5. *Functions Imported by Calculating Calculating Yield To Maturity*  describes the function imported from DropBox (*module_basic_concepts_fixed_income*).
+   * an invitation to use AI to expolre more concepts about yield to maturity.
+3. *Summarizing The Results of Calculating Yields To Maturity* summarizes the uses of yield to maturity.  
+4. *Functions Imported by Calculating Calculating Yield To Maturity*  describes the function imported from DropBox (*module_basic_concepts_fixed_income*).
 ```{tableofcontents}
 ```
