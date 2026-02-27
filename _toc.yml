@@ -7,7 +7,7 @@ parts:
     chapters:
     - file: Interacting With Jupyter Books
 
-  - caption: "Basic Concepts of Fixed Income: Chapter Five"
+  - caption: "Basic Concepts of Fixed Income: Chapter Six"
     chapters:
     - file: Chapter_Six_Highlights
       sections:
@@ -15,5 +15,19 @@ parts:
       - file: Calculating_Yields_To_Maturity
       - file: Chapter_Six_Summary
       - file: imported_functions_Six
+  - caption: Hub & Other Chapters Of Basic Concepts Of Fixed Income
+    chapters:
+    - url: https://patrickjhess.github.io/Volume-Three-Hub/
+      title: "Hub For Basic Concepts Of Fixed Income"
+    - url: https://patrickjhess.github.io/Vol-3-Chap-1/
+      title: "Chapter One: Basic Bond Concepts and the Term Structure of Interest Rates"
+    - url: https://patrickjhess.github.io/Vol-3-Chap-2-Chap-3/
+      title: "Chapters Two and Three: Accrued Interest and Bond Pay Data"
+    - url: https://patrickjhess.github.io/Vol-3-Chap-4/
+      title: "Chapters Four: Bootstrapping The Term Structure With Coupon Bonds" 
+    - url: https://patrickjhess.github.io/Vol-3-Chap-5/
+      title: "Chapter Five: Yield To Maturity"
+    - url: https://patrickjhess.github.io/Vol-3-Chap-7/
+      title: "Chapter Seven: Measuring Interest Rate Risk With Duration"
 
 

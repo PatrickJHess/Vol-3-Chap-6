@@ -114,7 +114,7 @@ For all three bonds a solution is reached within one iteration.
 
 
 
- see [Chapter Six Hints: Make the initial quess 7%](https://colab.research.google.com/drive/1ZMO2gJ56kCFUXS4zUhljrW5Cj6GESuKp), and check the [expected results here](https://colab.research.google.com/drive/1VJzd020F3lfs-1cP2EAS2fBSKazIPYOC#scrollTo=vnPEV819ilWL).
+ see [Chapter Six Hints: Make the initial quess 7%](https://patrickjhess.github.io/Hints-Results/Chapter_Six_Results.html#chapter-six-hints), and check the [expected results here](https://patrickjhess.github.io/Hints-Results/Chapter_Six_Results.html#chapter-six-results).
 
 </div>
 
