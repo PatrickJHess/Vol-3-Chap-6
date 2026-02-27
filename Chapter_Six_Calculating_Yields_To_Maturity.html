@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>What Is The Yield To Maturity And Why It Matters &#8212; Basic Concepts of Fixed Income:Par Yields</title>
+    <title>Calculating Yield To Maturity &#8212; Basic Concepts of Fixed Income:Par Yields</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -59,12 +59,10 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Define_YTM';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter_Six_Calculating_Yields_To_Maturity';</script>
     <script src="_static/open_new_tab.js?v=408d5d40"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Calculating Yields to Maturity (YTM)" href="Calculating_Yields_To_Maturity.html" />
-    <link rel="prev" title="Yields To Maturity" href="Chapter_Six_Highlights.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -127,6 +125,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -181,13 +181,13 @@
 <li class="toctree-l1"><a class="reference internal" href="Interacting%20With%20Jupyter%20Books.html">Working with Jupyter Books</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Concepts of Fixed Income: Chapter Six</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="Chapter_Six_Highlights.html">Yields To Maturity</a><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">What Is The Yield To Maturity And Why It Matters</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Chapter_Six_Highlights.html">Yields To Maturity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Define_YTM.html">What Is The Yield To Maturity And Why It Matters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Calculating_Yields_To_Maturity.html">Calculating Yields to Maturity (YTM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Chapter_Six_Summary.html">Summarizing The Results of Calculating Yields To Maturity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="imported_functions_Six.html">Functions Imported by Chapter Six.</a></li>
-</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
 
@@ -232,7 +232,74 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/PatrickJHess/Vol-3-Chap-6/issues/new?title=Issue%20on%20page%20%2FDefine_YTM.html&body=Your%20issue%20content%20here." target="_blank"
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/PatrickJHess/Vol-3-Chap-6/master?urlpath=tree/Chapter_Six_Calculating_Yields_To_Maturity.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/PatrickJHess/Vol-3-Chap-6/blob/master/Chapter_Six_Calculating_Yields_To_Maturity.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/PatrickJHess/Vol-3-Chap-6/issues/new?title=Issue%20on%20page%20%2FChapter_Six_Calculating_Yields_To_Maturity.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button"
    title="Open an issue"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -258,7 +325,7 @@
       
       
       
-      <li><a href="_sources/Define_YTM.md" target="_blank"
+      <li><a href="_sources/Chapter_Six_Calculating_Yields_To_Maturity.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -268,7 +335,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -342,7 +409,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>What Is The Yield To Maturity And Why It Matters</h1>
+    <h1>Calculating Yield To Maturity</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -352,14 +419,27 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formula-and-calculation">Formula and Calculation:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-yield-to-maturity">Limitations of Yield To Maturity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-yield-to-maturity">Calculating The Yield To Maturity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-yield-to-maturity-and-why-it-matters">What Is The Yield To Maturity And Why It Matters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-bond-value-sum-t-1-t-text-cash-flow-t-times-e-r-t-times-t">     <span class="math notranslate nohighlight">\(\text{Bond Value} = \sum_{t=1}^{T}\text{Cash Flow}_{t}\times e^{-r_t\times t}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-bond-value-sum-t-1-t-text-cash-flow-t-times-e-text-ytm-times-t">     <span class="math notranslate nohighlight">\(\text{Bond Value} = \sum_{t=1}^{T}\text{Cash Flow}_{t}\times e^{-\text{ytm}\times t}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-p-t-e-text-ytm-times-t-times-text-cash-flow-t">     <span class="math notranslate nohighlight">\( \text{P(t)} = e^{-\text{ytm}\times t}\times \text{Cash Flow}_t\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-ytm-large-frac-ln-frac-p-t-text-cash-flow-t-t">     <span class="math notranslate nohighlight">\(\text{ytm}=\Large\frac{-ln(\frac{P(t)}{\text{Cash Flow_t}})}{t}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-text-ytm">Limitations of <span class="math notranslate nohighlight">\(\text{ytm}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-yield-to-maturity">Calculating The Yield To Maturity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-f-x-delta-x-thickapprox-text-f-x-large-frac-d-text-f-x-dx-times-delta-x">       <span class="math notranslate nohighlight">\(\text{f}(x+\Delta x) \thickapprox \text{f}(x) +\large\frac{d\text{f}(x)}{dx}\times\Delta x\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#text-next-guess-text-previous-guess-large-frac-text-f-x-text-f-text-previous-guess-frac-df-text-previous-guess-dx">     <span class="math notranslate nohighlight">\(\text{next guess} =\text{previous guess}+\Large \frac{\text{f}(x)-\text{f}(\text{previous guess})}{\frac{df(\text{previous guess})}{dx}}\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-the-newton-raphson-method-to-solve-for-yield-to-maturity">Applying the Newton-Raphson method to solve for yield to maturity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-three-bond-example">A three bond example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-make-the-initial-guess-7-and-calculate-two-new-guesses-for-the-following-bonds"><font color="green">Application: Make the initial guess 7% and calculate two new guesses for the following bonds:</font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-deeper-dive-with-ai"><font color="green">Take a deeper dive with AI</font></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-suggestions-to-get-you-started-with-gemini">Some suggestions to get you started with Gemini.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-and-paste-the-questions-here">Copy and paste the questions here</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-deeper-dive-with-gemini"><font color="green">Take a deeper dive with Gemini</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-suggestions-to-get-you-started">Some suggestions to get you started.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#here-is-the-link-where-you-can-copy-and-paste-the-questions">Here is the link where you can copy and paste the questions</a></li>
 </ul>
 </li>
 </ul>
@@ -373,39 +453,73 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="what-is-the-yield-to-maturity-and-why-it-matters">
-<h1>What Is The Yield To Maturity And Why It Matters<a class="headerlink" href="#what-is-the-yield-to-maturity-and-why-it-matters" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="calculating-yield-to-maturity">
+<h1>Calculating Yield To Maturity<a class="headerlink" href="#calculating-yield-to-maturity" title="Link to this heading">#</a></h1>
+<section id="what-is-the-yield-to-maturity-and-why-it-matters">
+<h2>What Is The Yield To Maturity And Why It Matters<a class="headerlink" href="#what-is-the-yield-to-maturity-and-why-it-matters" title="Link to this heading">#</a></h2>
 <p>The Yield to Maturity (<span class="math notranslate nohighlight">\(\text{ytm}\)</span>) of a bond is defined as the single discount rate (<span class="math notranslate nohighlight">\(\text{ytm}\)</span>) that equates the present value of the bond’s expected future cash flows (coupons and principal) to its current market value.</p>
-<section id="formula-and-calculation">
-<h2>Formula and Calculation:<a class="headerlink" href="#formula-and-calculation" title="Link to this heading">#</a></h2>
 <p>The general formula for a bond’s value is:</p>
-<p>     <span class="math notranslate nohighlight">\(\text{Bond Value} = \sum_{t=1}^{T}\text{Cash Flow}_{t}\times e^{-r_t\times t}\)</span></p>
+<br>
+<section id="text-bond-value-sum-t-1-t-text-cash-flow-t-times-e-r-t-times-t">
+<h3>     <span class="math notranslate nohighlight">\(\text{Bond Value} = \sum_{t=1}^{T}\text{Cash Flow}_{t}\times e^{-r_t\times t}\)</span><a class="headerlink" href="#text-bond-value-sum-t-1-t-text-cash-flow-t-times-e-r-t-times-t" title="Link to this heading">#</a></h3>
 <br>
 <p>The discount rate at <span class="math notranslate nohighlight">\(\text{t}\)</span> is <span class="math notranslate nohighlight">\(\text{r}_t\)</span>. Substituting the yield to maturity (<span class="math notranslate nohighlight">\(\text{ytm}\)</span>) for each discount rate:</p>
-<p>     <span class="math notranslate nohighlight">\(\text{Bond Value} = \sum_{t=1}^{T}\text{Cash Flow}_{t}\times e^{-\text{ytm}\times t}\)</span>
-<br></p>
-<p>For a zero-coupon bond (a bond making a single payment at maturity), <span class="math notranslate nohighlight">\(\text{ytm}\)</span> can be calculated directly:</p>
-<p>     <span class="math notranslate nohighlight">\( \text{P(t)} = e^{-\text{ytm}\times t}\times \text{Cash Flow}_t\)</span></p>
+<br>
 </section>
-<section id="limitations-of-yield-to-maturity">
-<h2>Limitations of Yield To Maturity<a class="headerlink" href="#limitations-of-yield-to-maturity" title="Link to this heading">#</a></h2>
+<section id="text-bond-value-sum-t-1-t-text-cash-flow-t-times-e-text-ytm-times-t">
+<h3>     <span class="math notranslate nohighlight">\(\text{Bond Value} = \sum_{t=1}^{T}\text{Cash Flow}_{t}\times e^{-\text{ytm}\times t}\)</span><a class="headerlink" href="#text-bond-value-sum-t-1-t-text-cash-flow-t-times-e-text-ytm-times-t" title="Link to this heading">#</a></h3>
+<br>
+<p>For a zero-coupon bond (a bond making a single payment at maturity), <span class="math notranslate nohighlight">\(\text{ytm}\)</span> can be calculated directly:</p>
+<br>
+</section>
+<section id="text-p-t-e-text-ytm-times-t-times-text-cash-flow-t">
+<h3>     <span class="math notranslate nohighlight">\( \text{P(t)} = e^{-\text{ytm}\times t}\times \text{Cash Flow}_t\)</span><a class="headerlink" href="#text-p-t-e-text-ytm-times-t-times-text-cash-flow-t" title="Link to this heading">#</a></h3>
+<br>
+</section>
+<section id="text-ytm-large-frac-ln-frac-p-t-text-cash-flow-t-t">
+<h3>     <span class="math notranslate nohighlight">\(\text{ytm}=\Large\frac{-ln(\frac{P(t)}{\text{Cash Flow_t}})}{t}\)</span><a class="headerlink" href="#text-ytm-large-frac-ln-frac-p-t-text-cash-flow-t-t" title="Link to this heading">#</a></h3>
+<br>
+</section>
+<section id="limitations-of-text-ytm">
+<h3>Limitations of <span class="math notranslate nohighlight">\(\text{ytm}\)</span><a class="headerlink" href="#limitations-of-text-ytm" title="Link to this heading">#</a></h3>
 <p>The yield to maturity (<span class="math notranslate nohighlight">\(\text{ytm}\)</span>) is often, but incorrectly, assumed to be the actual internal rate of return (IRR) an investor will earn by holding a bond until maturity. This assumption holds true only for default-free bonds that involve a single payment at maturity.</p>
 <p>For bonds with multiple cash flows (i.e., coupon payments), the <span class="math notranslate nohighlight">\(\text{ytm}\)</span> is merely an approximation because the reinvestment rates for these payments are uncertain and are unlikely to equal the yield to maturity. This uncertainty parallels the limitations investors encounter when using IRR in capital budgeting. Furthermore, the promised payments for bonds with default risk add an additional level of uncertainty.</p>
 <p>Despite these limitations, it is important to recognize that bond pricing inherently incorporates the prevailing term structure of interest rates and reflects forward rates, that are indicative of future reinvestment returns.</p>
+</section>
 </section>
 <section id="calculating-the-yield-to-maturity">
 <h2>Calculating The Yield To Maturity<a class="headerlink" href="#calculating-the-yield-to-maturity" title="Link to this heading">#</a></h2>
 <p>As noted above, the <span class="math notranslate nohighlight">\(\text{ytm}\)</span> of a bond making a single payment may be directly calculated. There is no simple calculation for bonds that make multiple payments.  A trial and error process is required.  A practical way to implement the technique is a comparison of the errors of two initial guesses and then adjusting subsequent guesses based on the average rate of change between the errors and the guesses.</p>
 <p>For functions that are differentiable, a more mathematically efficient version of this trial-and-error technique exists: the Newton-Raphson method, that utilizes a first-order Taylor series approximation of the function.
 <br><br></p>
-<p>       <span class="math notranslate nohighlight">\(\text{f}(x+\Delta x) \thickapprox \text{f}(x) +\large\frac{d\text{f}(x)}{dx}\times\Delta x\)</span></p>
+<section id="text-f-x-delta-x-thickapprox-text-f-x-large-frac-d-text-f-x-dx-times-delta-x">
+<h3>       <span class="math notranslate nohighlight">\(\text{f}(x+\Delta x) \thickapprox \text{f}(x) +\large\frac{d\text{f}(x)}{dx}\times\Delta x\)</span><a class="headerlink" href="#text-f-x-delta-x-thickapprox-text-f-x-large-frac-d-text-f-x-dx-times-delta-x" title="Link to this heading">#</a></h3>
 <br>
 <p>The first derivative of the function is <span class="math notranslate nohighlight">\(\Large\frac{d\text{f}(x)}{dx}\)</span> at <span class="math notranslate nohighlight">\(x\)</span>, and <span class="math notranslate nohighlight">\(\Delta x\)</span> is the change in <span class="math notranslate nohighlight">\(x\)</span>.</p>
 <br>
 <p>As <span class="math notranslate nohighlight">\(\large\Delta \text{x}\)</span> goes to zero, the error of the approximation goes to zero.</p>
 <br>
 <p>The Newton-Raphson method improves each guess by scaling the error by the first derivative of the function at the previous guess:</p>
-<p>     <span class="math notranslate nohighlight">\(\text{next guess} =\text{previous guess}+\Large \frac{\text{f}(x)-\text{f}(\text{previous guess})}{\frac{df(\text{previous guess})}{dx}}\)</span></p>
+<br>
+<section id="text-next-guess-text-previous-guess-large-frac-text-f-x-text-f-text-previous-guess-frac-df-text-previous-guess-dx">
+<h4>     <span class="math notranslate nohighlight">\(\text{next guess} =\text{previous guess}+\Large \frac{\text{f}(x)-\text{f}(\text{previous guess})}{\frac{df(\text{previous guess})}{dx}}\)</span><a class="headerlink" href="#text-next-guess-text-previous-guess-large-frac-text-f-x-text-f-text-previous-guess-frac-df-text-previous-guess-dx" title="Link to this heading">#</a></h4>
+</section>
+</section>
+</section>
+<section id="applying-the-newton-raphson-method-to-solve-for-yield-to-maturity">
+<h2>Applying the Newton-Raphson method to solve for yield to maturity<a class="headerlink" href="#applying-the-newton-raphson-method-to-solve-for-yield-to-maturity" title="Link to this heading">#</a></h2>
+<p>In our case, we want to solve for the  unknown yield to maturity.:</p>
+<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;$\large \text{Bond Value}= \sum_{t=1}^{T}\text{Cash Flow}_t\times e^{-\text{ytm}\times t}$
+<p><br><brz></p>
+<p>Our guess wll be the variable <span class="math notranslate nohighlight">\(\text{rate}\)</span>, and the function that we will iterate over is:
+<br><br></p>
+<p>     <span class="math notranslate nohighlight">\(\large\sum_{t=1}^{T}\text{Cash Flow}_t\times e^{-\text{rate}\times t}\)</span></p>
+<p><br><br></p>
+<p>The first derivative of the function is:
+<br><br></p>
+<p>     <span class="math notranslate nohighlight">\(\large\ -\sum_{t=1}^{T} t\times\text{Cash Flow}_t\times e^{-\text{rate}\times t}\)</span></p>
+<br>
 </section>
 <section id="a-three-bond-example">
 <h2>A three bond example<a class="headerlink" href="#a-three-bond-example" title="Link to this heading">#</a></h2>
@@ -413,6 +527,7 @@ document.write(`
 <br></p>
 <p>The prices of the bonds at the actual spot rate of 5% and the initial guess of 4% are calculated and shown in the following table.</p>
 <br>
+<center>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Bond</p></th>
@@ -436,9 +551,11 @@ document.write(`
 </tbody>
 </table>
 </div>
+</center>
 <br>
 <p>The pricing errors are scaled by the derivatives evaluated at the initial guess of 4%.  The next guess is augmented by the scaled pricing errors.</p>
 <br>
+<center>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Bond</p></th>
@@ -470,6 +587,7 @@ document.write(`
 </tbody>
 </table>
 </div>
+</center>
 <br>
 <p>For all three bonds a solution is reached within one iteration.</p>
 </section>
@@ -480,6 +598,7 @@ document.write(`
     line-height: 1.5;
     padding: 15px">
 <br>
+<center>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Maturity</p></th>
@@ -498,26 +617,27 @@ document.write(`
 </tr>
 <tr class="row-even"><td><p>   One Year</p></td>
 <td><p>   5</p></td>
-<td><p></p></td>
+<td><p> </p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</center>
+<br>
 <p>see <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Six_Results.html#chapter-six-hints">Chapter Six Hints: Make the initial quess 7%</a>, and check the <a class="reference external" href="https://patrickjhess.github.io/Hints-Results/Chapter_Six_Results.html#chapter-six-results">expected results here</a>.</p>
-</div>
-</section>
-<section id="take-a-deeper-dive-with-ai">
-<h2><font color='green'>Take a deeper dive with AI</font><a class="headerlink" href="#take-a-deeper-dive-with-ai" title="Link to this heading">#</a></h2>
-<section id="some-suggestions-to-get-you-started-with-gemini">
-<h3>Some suggestions to get you started with Gemini.<a class="headerlink" href="#some-suggestions-to-get-you-started-with-gemini" title="Link to this heading">#</a></h3>
+</div></section>
+<section id="take-a-deeper-dive-with-gemini">
+<h2><font color='green'>Take a deeper dive with Gemini</font><a class="headerlink" href="#take-a-deeper-dive-with-gemini" title="Link to this heading">#</a></h2>
+<section id="some-suggestions-to-get-you-started">
+<h3>Some suggestions to get you started.<a class="headerlink" href="#some-suggestions-to-get-you-started" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p><strong>What’s the relation between the yield to maturity and the rate return earned from holding a bond until it matures?</strong></p></li>
 <li><p><strong>Is it OK to use the Newton-Raphson technique to solve for the yield to maturity of a Treasury bill?</strong></p></li>
 <li><p><strong>Can the Newton-Raphson technique be used to solve for the yield to maturity with both continuous and discrete compounding?</strong></p></li>
 </ol>
 </section>
-<section id="copy-and-paste-the-questions-here">
-<h3><a class="reference external" href="https://gemini.google.com">Copy and paste the questions here</a><a class="headerlink" href="#copy-and-paste-the-questions-here" title="Link to this heading">#</a></h3>
+<section id="here-is-the-link-where-you-can-copy-and-paste-the-questions">
+<h3><a class="reference external" href="https://gemini.google.com">Here is the link where you can copy and paste the questions</a><a class="headerlink" href="#here-is-the-link-where-you-can-copy-and-paste-the-questions" title="Link to this heading">#</a></h3>
 </section>
 </section>
 </section>
@@ -552,24 +672,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="Chapter_Six_Highlights.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Yields To Maturity</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="Calculating_Yields_To_Maturity.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Calculating Yields to Maturity (YTM)</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -586,14 +688,27 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formula-and-calculation">Formula and Calculation:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-yield-to-maturity">Limitations of Yield To Maturity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-yield-to-maturity">Calculating The Yield To Maturity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-yield-to-maturity-and-why-it-matters">What Is The Yield To Maturity And Why It Matters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-bond-value-sum-t-1-t-text-cash-flow-t-times-e-r-t-times-t">     <span class="math notranslate nohighlight">\(\text{Bond Value} = \sum_{t=1}^{T}\text{Cash Flow}_{t}\times e^{-r_t\times t}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-bond-value-sum-t-1-t-text-cash-flow-t-times-e-text-ytm-times-t">     <span class="math notranslate nohighlight">\(\text{Bond Value} = \sum_{t=1}^{T}\text{Cash Flow}_{t}\times e^{-\text{ytm}\times t}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-p-t-e-text-ytm-times-t-times-text-cash-flow-t">     <span class="math notranslate nohighlight">\( \text{P(t)} = e^{-\text{ytm}\times t}\times \text{Cash Flow}_t\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-ytm-large-frac-ln-frac-p-t-text-cash-flow-t-t">     <span class="math notranslate nohighlight">\(\text{ytm}=\Large\frac{-ln(\frac{P(t)}{\text{Cash Flow_t}})}{t}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-text-ytm">Limitations of <span class="math notranslate nohighlight">\(\text{ytm}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-yield-to-maturity">Calculating The Yield To Maturity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-f-x-delta-x-thickapprox-text-f-x-large-frac-d-text-f-x-dx-times-delta-x">       <span class="math notranslate nohighlight">\(\text{f}(x+\Delta x) \thickapprox \text{f}(x) +\large\frac{d\text{f}(x)}{dx}\times\Delta x\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#text-next-guess-text-previous-guess-large-frac-text-f-x-text-f-text-previous-guess-frac-df-text-previous-guess-dx">     <span class="math notranslate nohighlight">\(\text{next guess} =\text{previous guess}+\Large \frac{\text{f}(x)-\text{f}(\text{previous guess})}{\frac{df(\text{previous guess})}{dx}}\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-the-newton-raphson-method-to-solve-for-yield-to-maturity">Applying the Newton-Raphson method to solve for yield to maturity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-three-bond-example">A three bond example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-make-the-initial-guess-7-and-calculate-two-new-guesses-for-the-following-bonds"><font color="green">Application: Make the initial guess 7% and calculate two new guesses for the following bonds:</font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-deeper-dive-with-ai"><font color="green">Take a deeper dive with AI</font></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-suggestions-to-get-you-started-with-gemini">Some suggestions to get you started with Gemini.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-and-paste-the-questions-here">Copy and paste the questions here</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-deeper-dive-with-gemini"><font color="green">Take a deeper dive with Gemini</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-suggestions-to-get-you-started">Some suggestions to get you started.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#here-is-the-link-where-you-can-copy-and-paste-the-questions">Here is the link where you can copy and paste the questions</a></li>
 </ul>
 </li>
 </ul>
