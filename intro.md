@@ -1,14 +1,14 @@
-# **Financial Python**
+# Financial Python
 
-## **Volume: Basic Concepts of Fixed Income**
+## Volume: Basic Concepts of Fixed Income
 
-### **Chapter Six: Yield To Maturity**
+### Chapter Six: Yield To Maturity
 
-Chapter Five introduced **par yields** as the coupon rates for bonds that sell at their par value, where these rates are determined by the term structure of interest rates.
+Chapter Five introduced par yields as the coupon rates for bonds that sell at their par value, where these rates are determined by the term structure of interest rates.
 
 This chapter shifts focus to **yields to maturity**. Unlike par yields, yields to maturity are *not* derived from the term structure. Instead, the yield to maturity is defined as the single discount rate that equates a bond's present value to its current market price. This rate is typically calculated using an iterative procedure to solve the bond's present value equation.
 
-**The Relation Between Par Yields and Yields to Maturity**
+The Relation Between Par Yields and Yields to Maturity
 
 Although generally different, par yields and yields to maturity are the same when bonds trade at par. A bond's par value is defined as the present value of its par value coupons and the principal payment at maturity.
 
@@ -52,6 +52,6 @@ The yield to maturity of a bond selling for par is its par yield.
 
 It's important to note that the yield to maturity generally does not forecast future rates of return. Nevertheless, similar to par yields, yields to maturity provide valuable insights into the relative pricing of bonds.
 
-### **Leapfroggging into the chapter**
+### Leapfroggging into the chapter
 
 You can begin with Chapter six even if you are unfamiliar with the content of the preceding chapters. This is possible because a custom module containing the functions developed earlier is imported directly into the chapter. There are no required dependencies between this chapter and previous ones.
